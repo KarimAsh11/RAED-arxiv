@@ -1,0 +1,10 @@
+# Required to make the "experiments" dir the default one for the output of the models
+hydra:
+  run:
+    dir: ./experiments/${logging.wandb_arg.name}
+
+defaults:
+  - train: rag_trainer.yaml
+  - model: emerge_T5.yaml
+  - data: Aida_RAG.yaml
+  - logging: wandb_log.yaml

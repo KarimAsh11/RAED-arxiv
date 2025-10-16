@@ -1,0 +1,4 @@
+# @package _group_
+model_name: 't5-large'
+# model_name: 'google/flan-t5-large'
+fid: False

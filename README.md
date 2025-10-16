@@ -1,2 +1,2 @@
-# RAED-arxiv
-Arxiv repository for RAED
+# RAED
+RAED: Retrieval-Augmented Entity Descriptions

@@ -1,0 +1,15 @@
+# don't forget loggers.login() for the first usage.
+log: False # set to False to avoid the logging
+
+wandb_arg:
+  _target_: pytorch_lightning.loggers.WandbLogger
+  name: smollm2-test
+  project: EntDef-RAG
+  save_dir: ./
+  log_model: False
+  entity: Null
+  mode: "online"
+
+watch:
+  log: "all"
+  log_freq: 100

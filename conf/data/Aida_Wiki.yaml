@@ -1,0 +1,26 @@
+datasets:
+  train:
+    _target_: src.data.EmergeDataset
+    name: 'train'
+    data_path: '../emerging-entities/data/rag/aida-train-kilt-Wikipedia.DM.v4.jsonl'
+    mention_map_path: "../emerging-entities/data/gold-index/golden-wiki-index-4-jun-def-contexts-top-10-norm.pickle"
+
+  val:
+    _target_: src.data.EmergeDataset
+    name: 'validation'
+    data_path: '../emerging-entities/data/rag/aida-dev-kilt-Wikipedia.DM.v4.jsonl'
+    mention_map_path: "../emerging-entities/data/gold-index/golden-wiki-index-4-jun-def-contexts-top-10-norm.pickle"
+
+  test:
+    _target_: src.data.EmergeDataset
+    name: 'test'
+    data_path: '../emerging-entities/data/rag/aida-test-kilt-Wikipedia.DM.v4.jsonl'
+    mention_map_path: "../emerging-entities/data/gold-index/golden-wiki-index-4-jun-def-contexts-top-10-norm.pickle"
+
+def_source: 'Wikipedia'
+batch_size: 8
+batch_size_val: 1
+num_workers:
+  train: 4
+  val: 4
+  test: 4

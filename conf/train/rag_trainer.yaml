@@ -1,0 +1,65 @@
+# @package _group_
+
+# reproducibility
+seed: 42
+
+kl_div_coeff: 0.1
+emerge_mode: True
+
+model_name: default_name
+
+output_path: predictions-$rouge_{rouge:.4f}-epoch_{epoch:02d}.tsv
+output_val_path: predictions-tempel-baseline-val.jsonl
+output_test_path: predictions-tempel-baseline-test.jsonl
+
+
+float32_matmul_precision: "medium"
+
+# pl_trainer
+pl_trainer:
+  _target_: pytorch_lightning.Trainer
+  accelerator: gpu
+  devices: 1
+  accumulate_grad_batches: 16
+  gradient_clip_val: 1.0
+  val_check_interval: 1.0 # you can specify an int "n" here => validation every "n" steps
+  max_steps: 1_000_000
+  num_sanity_val_steps: 0
+  log_every_n_steps: 2
+  precision: "32"
+generation_params:
+  num_return_sequences: 1
+  num_beams: 3
+  min_length: 2
+  max_new_tokens: 200
+
+# LR scheduler monitoring
+lr_scheduler:
+  lr: 2e-05
+  lr_monitoring: True
+  num_training_steps: 1_000_000
+  num_warmup_steps: 2000
+  # warmup_steps_ratio: 0.05
+  # no_decay_params:
+  #   - bias
+  #   - LayerNorm.weight
+
+evaluation_print: True
+
+# early stopping callback
+early_stopping_callback:
+  _target_: pytorch_lightning.callbacks.EarlyStopping
+  monitor: bleu
+  mode: max
+  patience: 5
+
+model_checkpoint_callback:
+  _target_: pytorch_lightning.callbacks.ModelCheckpoint
+  monitor: bleu
+  mode: max
+  verbose: true
+  save_top_k: 1
+  dirpath: experiments/${model.model_name}
+  filename: checkpoint-bleu_{bleu:.4f}-epoch_{epoch:02d}
+  save_last: false
+  auto_insert_metric_name: false

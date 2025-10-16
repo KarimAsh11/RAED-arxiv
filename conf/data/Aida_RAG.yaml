@@ -1,0 +1,30 @@
+datasets:
+  train:
+    _target_: src.data.EmergeDataset
+    name: 'train'
+    data_path: '../emerging-entities/data/rag/retr-v5/aida-train-kilt-Wikipedia.DM.v4.retrieved.ner.26072024.jsonl'
+
+  val:
+    _target_: src.data.EmergeDataset
+    name: 'validation'
+    data_path: '../emerging-entities/data/rag/retr-v5/aida-val-kilt-Wikipedia.DM.v4.retrieved.jsonl'
+
+  test:
+    _target_: src.data.EmergeDataset
+    name: 'test'
+    data_path: '../emerging-entities/data/rag/retr-v5/aida-test-kilt-Wikipedia.DM.v4.retrieved.jsonl'
+
+
+def_source: 'Wikipedia'
+target: 'title_def'
+
+batch_size: 1
+batch_size_val: 1
+num_workers:
+  train: 0
+  val: 0
+  test: 0
+
+train_extra_contexts: 10
+test_extra_contexts: 10
+shuff_prob : 0.0

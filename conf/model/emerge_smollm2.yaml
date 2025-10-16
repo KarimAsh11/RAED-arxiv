@@ -1,0 +1,3 @@
+# @package _group_
+model_name: 'HuggingFaceTB/SmolLM2-360M'
+fid: False
