@@ -1,6 +1,12 @@
 <div align="center">
 
-# 🔍 RAED: Retrieval-Augmented Entity Descriptions
+ 
+<img src="raed-logo.png" alt="Logo" height="200" align="center"/>
+
+# RAED: Retrieval-Augmented Entity Description Generation for Emerging Entity Linking and Disambiguation
+
+<img src="https://github.com/Babelscape/FENICE/blob/master/Sapienza_Babelscape.png?raw=True" height="70">
+
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c?logo=pytorch)](https://pytorch.org/)
@@ -16,21 +22,22 @@
 [Models](#-models) •
 [Documentation](#-configuration)
 
+
 </div>
 
 ---
 
 ## 📖 Overview
 
-RAED combines neural language models (T5, BART, SmolLM2) with a retrieval component to generate accurate entity descriptions. The system retrieves relevant context passages from Wikipedia and uses them to augment the generation process, improving accuracy on entity linking benchmarks like AIDA.
+RAED combines language models (T5, SmolLM2, Llama-3.2) with a retrieval component to generate accurate entity descriptions. The system retrieves relevant context passages from Wikipedia and uses them to augment the generation process, improving performance on the entity description generation task.
 
 ### ✨ Key Features
 
-- 🤖 **Multiple Model Support**: T5, BART, FiD (Fusion-in-Decoder), SmolLM2, and Llama-3.2
+- 🤖 **Multiple Model Support**: T5, FiD (Fusion-in-Decoder), SmolLM2, and Llama-3.2
 - 🔎 **Retrieval-Augmented Generation**: Integrates retrieved contexts to improve entity description quality
-- 🎯 **Entity Linking Evaluation**: Tested on AIDA and other entity linking datasets
+- 🎯 **Entity Disambiguation and Emerging Entity Linking Evaluation**: Tested on AIDA and Tempel datasets
 - ⚙️ **Flexible Training Modes**: Support for both encoder-decoder and decoder-only models
-- ⚡ **PyTorch Lightning**: Clean, modular training pipeline
+- ⚡ **PyTorch Lightning**: Easily extendible pipeline
 
 ## 🚀 Installation
 
@@ -136,7 +143,6 @@ RAED uses [Hydra](https://hydra.cc/) for configuration management. Configuration
 
 - `conf/raed.yaml`: Main configuration file
 - `conf/model/emerge_T5.yaml`: T5 model configuration
-- `conf/model/emerge_bart.yaml`: BART model configuration
 - `conf/model/emerge_smollm2.yaml`: SmolLM2 configuration
 - `conf/data/Aida_RAG.yaml`: AIDA dataset with retrieval
 - `conf/train/rag_trainer.yaml`: Training hyperparameters
@@ -147,7 +153,7 @@ RAED uses [Hydra](https://hydra.cc/) for configuration management. Configuration
 
 ```yaml
 model:
-  model_name: 't5-large'  # or 'facebook/bart-large', 'HuggingFaceTB/SmolLM2-360M'
+  model_name: 't5-large'  # or 'HuggingFaceTB/SmolLM2-360M'
   fid: False              # Enable Fusion-in-Decoder
 ```
 
@@ -240,9 +246,10 @@ Results are logged to:
 
 ### 📊 Metrics
 
-- BLEU score
-- Accuracy (for entity linking)
-- Perplexity
+- NLG metrics (BLEU, Rouge, Semantic Similarity, BERTScore)
+- Factuality metric (Factual-NLI)
+- inKB F1-score (Entity Disambiguation)
+- Accuracy@64 (Emerging Entity Linking)
 
 ## 🤖 Models
 
@@ -252,16 +259,13 @@ Results are logged to:
    - `t5-base`, `t5-large`
    - `google/flan-t5-large`
 
-2. **BART**: Bidirectional and Auto-Regressive Transformers
-   - `facebook/bart-large`
-
-3. **FiD**: Fusion-in-Decoder
+2. **FiD**: Fusion-in-Decoder
    - T5-based architecture for multi-document retrieval
 
-4. **SmolLM2**: Small language model for efficient generation
+3. **SmolLM2**: Small language model for efficient generation
    - `HuggingFaceTB/SmolLM2-360M`
 
-5. **Llama-3.2**: 
+4. **Llama-3.2**: 
    - `meta-llama/Llama-3.2-1B`
 
 ## 🔔 Callbacks
