@@ -328,10 +328,3 @@ export PYTHONPATH="${PYTHONPATH}:$(pwd)"
 ## 📧 Contact
 
 For questions or issues, please open an issue on GitHub or contact [your email].
-
-## 🙏 Acknowledgments
-
-- Built with PyTorch Lightning
-- Uses Hugging Face Transformers
-- Retrieval system based on Golden Retriever
-- Inspired by FiD (Fusion-in-Decoder) architecture
