@@ -318,7 +318,7 @@ Contributions are welcome! Please:
 - Use mixed precision training: `precision: "16"`
 - Reduce context window size
 
-### ❌ Import Errors
+### ❌ Errors
 
 Make sure to set `PYTHONPATH`:
 ```bash
