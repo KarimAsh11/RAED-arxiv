@@ -256,7 +256,7 @@ Results are logged to:
 ### 🏗️ Supported Architectures
 
 1. **T5**: Text-to-Text Transfer Transformer
-   - `t5-base`, `t5-large`
+   - `t5-large`
    - `google/flan-t5-large`
 
 2. **FiD**: Fusion-in-Decoder
@@ -267,6 +267,12 @@ Results are logged to:
 
 4. **Llama-3.2**: 
    - `meta-llama/Llama-3.2-1B`
+
+### RAED Models
+- [RAED-t5](https://huggingface.co/KarimGhon/siglip-base-patch16-256-ft-concept-pedia)
+- [RAED-Flan-t5](https://huggingface.co/KarimGhon/siglip-large-patch16-256-ft-concept-pedia)
+- [RAED-SmolLM2-360M](https://huggingface.co/KarimGhon/siglip-large-patch16-256-ft-concept-pedia-3)
+- [RAED-Llama-3.2-1B](https://huggingface.co/KarimGhon/siglip-large-patch16-256-ft-concept-pedia-3)
 
 ## 🔔 Callbacks
 
