@@ -1,12 +1,8 @@
 <div align="center">
 
- 
 <img src="raed-logo.png" alt="Logo" height="200" align="center"/>
 
 # RAED: Retrieval-Augmented Entity Description Generation for Emerging Entity Linking and Disambiguation
-
-<img src="https://github.com/Babelscape/FENICE/blob/master/Sapienza_Babelscape.png?raw=True" height="70">
-
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c?logo=pytorch)](https://pytorch.org/)
@@ -27,9 +23,16 @@
 
 ---
 
+## 🔥 News
+
+- **[2025-10-28]** "RAED: Retrieval-Augmented Entity Description Generation for Emerging Entity Linking and Disambiguation" accepted at EMNLP 2025!
+- **[2025-10-28]** Released RAED models for Emerging Entity Description Generation 
+
+---
+
 ## 📖 Overview
 
-RAED combines language models (T5, SmolLM2, Llama-3.2) with a retrieval component to generate accurate entity descriptions. The system retrieves relevant context passages from Wikipedia and uses them to augment the generation process, improving performance on the entity description generation task.
+RAED combines language models with a retrieval module to generate facutally accurate entity descriptions. RAED retrieves relevant context passages from Wikipedia and uses them to augment the generation process, improving performance on the entity description generation task.
 
 ### ✨ Key Features
 
@@ -38,6 +41,22 @@ RAED combines language models (T5, SmolLM2, Llama-3.2) with a retrieval componen
 - 🎯 **Entity Disambiguation and Emerging Entity Linking Evaluation**: Tested on AIDA and Tempel datasets
 - ⚙️ **Flexible Training Modes**: Support for both encoder-decoder and decoder-only models
 - ⚡ **PyTorch Lightning**: Easily extendible pipeline
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Project Structure](#project-structure)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Data Preparation](#data-preparation)
+- [Evaluation](#evaluation)
+- [Models](#models)
+- [Citation](#cication)
+- [Contributing](#contributing)
+- [License](#license)
+- [Citation](#citation)
+- [Acknowledgments](#acknowledgments)
+
 
 ## 🚀 Installation
 
@@ -244,6 +263,15 @@ Results are logged to:
 - Local files (JSONL format)
 - Console output
 
+### 🔔 Callbacks
+
+RAED includes several custom callbacks for evaluation:
+
+- `EvalCallback`: Standard BLEU evaluation
+- `PerplexCallback`: Perplexity-based candidate ranking
+- `ConstrainedPerplexCallback`: Constrained generation
+- `PredictCallback`: Save predictions to file
+
 ### 📊 Metrics
 
 - NLG metrics (BLEU, Rouge, Semantic Similarity, BERTScore)
@@ -268,38 +296,11 @@ Results are logged to:
 4. **Llama-3.2**: 
    - `meta-llama/Llama-3.2-1B`
 
-### RAED Models
-- [RAED-t5](https://huggingface.co/KarimGhon/siglip-base-patch16-256-ft-concept-pedia)
-- [RAED-Flan-t5](https://huggingface.co/KarimGhon/siglip-large-patch16-256-ft-concept-pedia)
-- [RAED-SmolLM2-360M](https://huggingface.co/KarimGhon/siglip-large-patch16-256-ft-concept-pedia-3)
-- [RAED-Llama-3.2-1B](https://huggingface.co/KarimGhon/siglip-large-patch16-256-ft-concept-pedia-3)
+### RAED for Emerging Entity Description Generation
+- [🤗 RAED-passage-index ](https://huggingface.co/sapienzanlp/RAED-passage-index-wikipedia)
+- [🤗 RAED-retriever](https://huggingface.co/sapienzanlp/RAED-retriever-e5-base-v2-wikipedia)
+- [🤗 RAED-t5-large](https://huggingface.co/sapienzanlp/RAED-t5-large)
 
-## 🔔 Callbacks
-
-RAED includes several custom callbacks for evaluation:
-
-- `EvalCallback`: Standard BLEU evaluation
-- `PerplexCallback`: Perplexity-based candidate ranking
-- `ConstrainedPerplexCallback`: Constrained generation
-- `PredictCallback`: Save predictions to file
-
-## 📚 Citation
-
-If you use this code in your research, please cite:
-
-```bibtex
-@inproceedings{raed2024,
-  title={RAED: Retrieval-Augmented Entity Descriptions},
-  author={Your Name},
-  year={2024}
-}
-```
-
-## 📜 License
-
-This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
-
-[![CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## 🤝 Contributing
 
@@ -310,27 +311,32 @@ Contributions are welcome! Please:
 3. Make your changes
 4. Submit a pull request
 
-## 🔧 Troubleshooting
+## 📜 License
 
-### ⚠️ CUDA Out of Memory
+This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-- Reduce `batch_size` in configuration
-- Decrease `train_extra_contexts` and `test_extra_contexts`
-- Use gradient accumulation: increase `accumulate_grad_batches`
+[![CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-### 🐌 Slow Training
+## 📚 Citation
 
-- Increase `num_workers` for data loading
-- Use mixed precision training: `precision: "16"`
-- Reduce context window size
+If you use this code in your research, please cite:
 
-### ❌ Errors
-
-Make sure to set `PYTHONPATH`:
-```bash
-export PYTHONPATH="${PYTHONPATH}:$(pwd)"
+```bibtex
+@inproceedings{ghonim2025raed,
+  title={RAED: Retrieval-Augmented Entity Description Generation for Emerging Entity Linking and Disambiguation},
+  author={Karim Ghonim, Pere-Lluís Huguet Cabot, Riccardo Orlando, Roberto Navigli},
+  year={2025}
+}
 ```
+
+## Acknowledgments
+
+- This work was conducted at the **Sapienza NLP Group** and **Babelscape**.
+
+- We gratefully acknowledge the CREATIVE project (CRoss-modal understanding and gEnerATIon of Visual and tExtual content), which is funded by the MUR Progetti di Ricerca di Rilevante Interesse Nazionale programme (PRIN 2020)
+- We also gratefully acknowledge the support of the PNRR MUR project PE0000013-FAIR.
+
 
 ## 📧 Contact
 
-For questions or issues, please open an issue on GitHub or contact [your email].
+For questions or issues, please open an issue on GitHub or contact [ghonim@diag.uniroma1.it].
