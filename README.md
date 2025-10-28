@@ -331,7 +331,7 @@ If you use this code in your research, please cite:
 
 ## Acknowledgments
 
-- This work was conducted at the **Sapienza NLP Group** and **Babelscape**.
+- This work was conducted at the **Sapienza NLP Group**.
 
 - We gratefully acknowledge the CREATIVE project (CRoss-modal understanding and gEnerATIon of Visual and tExtual content), which is funded by the MUR Progetti di Ricerca di Rilevante Interesse Nazionale programme (PRIN 2020)
 - We also gratefully acknowledge the support of the PNRR MUR project PE0000013-FAIR.
