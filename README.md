@@ -32,7 +32,7 @@
 
 ## 📖 Overview
 
-RAED combines language models with a retrieval module to generate facutally accurate entity descriptions. RAED retrieves relevant context passages from Wikipedia and uses them to augment the generation process, improving performance on the entity description generation task.
+RAED combines language models with a retrieval module to generate facutally accurate entity descriptions. RAED retrieves relevant context passages from Wikipedia and uses them to ground its generated output, improving performance on the entity description generation task.
 
 ### ✨ Key Features
 
