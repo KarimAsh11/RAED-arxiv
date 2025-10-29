@@ -4,12 +4,10 @@
 
 # RAED: Retrieval-Augmented Entity Description Generation for Emerging Entity Linking and Disambiguation
 
-[![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://www.python.org/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c?logo=pytorch)](https://pytorch.org/)
-[![Lightning](https://img.shields.io/badge/Lightning-2.0%2B-792ee5?logo=lightning)](https://lightning.ai/)
-[![Hugging Face](https://img.shields.io/badge/🤗-Transformers-yellow)](https://huggingface.co/transformers/)
-[![License](https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-lightgrey.svg)](LICENSE)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Paper](http://img.shields.io/badge/ArXiv-B31B1B.svg)](add-me)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![Hugging Face Collection](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-FCD21D)](https://huggingface.co/collections/sapienzanlp/raed)
+
 
 **A PyTorch Lightning framework for generating entity descriptions using retrieval-augmented generation**
 
